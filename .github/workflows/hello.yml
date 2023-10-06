@@ -38,4 +38,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get-Date
-        run: "All Dates have completed"
+        run: echo "All Dates have completed"
