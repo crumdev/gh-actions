@@ -1,0 +1,41 @@
+name: first
+
+on: 
+  push:
+    branches:
+      - main
+      - ch01-01
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  
+  job1:
+    name: first_job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get-Date
+        run: echo $(date)
+
+  job2:
+    name: second_job
+    runs-on: windows-latest
+    steps:
+      - name: Get-Date
+        run: "write-host(get-date)"
+  
+  job3:
+    name: third_job
+    runs-on: macos-latest
+    steps:
+      - name: Get-Date
+        run: echo $(date)
+
+  job4:
+    name: forth_job
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get-Date
+        run: echo "All Dates have completed"
