@@ -15,6 +15,7 @@ jobs:
 
   job2:
     name: second_job
+    needs: job1
     runs-on: windows-latest
     steps:
       - name: step1
