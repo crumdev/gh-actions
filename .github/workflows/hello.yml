@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get-Date
-        run: echo date
+        run: echo $(date)
 
   job2:
     name: second_job
@@ -30,7 +30,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Get-Date
-        run: echo date
+        run: echo $(date)
 
   job4:
     name: forth_job
