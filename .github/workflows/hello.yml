@@ -1,6 +1,13 @@
 name: first
 
-on: push
+on: 
+  push:
+    branches:
+      - main
+      - ch01-01
+  pull_request:
+    branches:
+      - main
 
 jobs:
   
@@ -8,17 +15,27 @@ jobs:
     name: first_job
     runs-on: ubuntu-latest
     steps:
-      - name: "step1"
-        uses: actions/checkout@v2
-      - name: "step2"
-        run: "env | sort"
+      - name: Get-Date
+        run: echo date
 
   job2:
     name: second_job
-    needs: job1
     runs-on: windows-latest
     steps:
-      - name: step1
-        uses: actions/checkout@v2
-      - name: step2
-        run: "gci Env: | Sort-Object Name" 
+      - name: Get-Date
+        run: "write-host(get-date)"
+  
+  job3:
+    name: third_job
+    runs-on: macos-latest
+    steps:
+      - name: Get-Date
+        run: "write-host(get-date)"
+
+  job4:
+    name: forth_job
+    needs: [job1, job2, job3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get-Date
+        run: "All Dates have completed"
